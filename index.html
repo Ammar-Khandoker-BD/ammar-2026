@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Amber Ali Khandoker | Portfolio</title>
+  <meta name="description" content="Modern personal portfolio of Md. Amber Ali Khandoker — HR, ERP/HRIS, Data Ops, Inventory Management." />
+  <meta name="theme-color" content="#0b0f19" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070a12;
+      --bg2:#0b1020;
+      --card:rgba(255,255,255,0.06);
+      --card2:rgba(255,255,255,0.08);
+      --stroke:rgba(255,255,255,0.10);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,0.72);
+      --muted2:rgba(234,240,255,0.52);
+      --primary:#6aa6ff;
+      --primary2:#9b7bff;
+      --good:#55ffa7;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 28px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius2: 28px;
+      --max: 1150px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(106,166,255,.22), transparent 60%),
+        radial-gradient(900px 650px at 85% 20%, rgba(155,123,255,.18), transparent 55%),
+        radial-gradient(850px 600px at 60% 95%, rgba(85,255,167,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .bg-grid{
+      position:fixed; inset:0; pointer-events:none; opacity:.28;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(900px 520px at 50% 15%, #000 50%, transparent 90%);
+      z-index:0;
+    }
+
+    .container{max-width:var(--max); margin:0 auto; padding: 0 18px; position:relative; z-index:1}
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,18,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px;
+      min-width: 220px;
+    }
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(106,166,255,.95), rgba(155,123,255,.95));
+      box-shadow: 0 10px 30px rgba(106,166,255,.25);
+      position:relative;
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 55%);
+      transform: rotate(18deg);
+      opacity:.55;
+    }
+    .brand small{display:block; font-weight:600; color:var(--muted2); margin-top:2px}
+
+    .nav-links{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .nav-links a{
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:14px;
+      transition: .25s ease;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+
+    .nav-cta{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:800;
+      font-size:14px;
+      box-shadow: var(--shadow2);
+      transition: transform .18s ease, background .25s ease, border-color .25s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16)}
+
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(106,166,255,.95), rgba(155,123,255,.92));
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 16px 45px rgba(106,166,255,.22);
+    }
+    .btn-primary:hover{transform: translateY(-2px)}
+
+    .hamburger{display:none}
+
+    /* Hero */
+    .hero{padding: 70px 0 40px; position:relative;}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(900px 380px at 15% 15%, rgba(106,166,255,.24), transparent 60%),
+        radial-gradient(850px 360px at 85% 20%, rgba(155,123,255,.18), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .hero-inner{position:relative; padding: 28px 28px 24px}
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+      width: fit-content;
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(135deg, var(--good), rgba(106,166,255,1));
+      box-shadow: 0 0 0 6px rgba(85,255,167,.10);
+    }
+
+    .hero-title{
+      margin-top:14px;
+      font-size: 44px;
+      line-height: 1.06;
+      letter-spacing: -1.2px;
+      font-weight: 850;
+    }
+
+    .gradient-name{
+      background: linear-gradient(90deg, rgba(106,166,255,1), rgba(155,123,255,1), rgba(85,255,167,1));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+
+    .hero-sub{
+      margin-top: 14px;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.75;
+    }
+
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(15,26,51,.55);
+      border:1px solid rgba(255,255,255,.10);
+      color: rgba(234,240,255,.88);
+      font-weight:800;
+      font-size: 13px;
+      transition: transform .18s ease, background .25s ease;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.07)}
+
+    .hero-actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+
+    .mini{
+      display:flex; gap:14px; margin-top:22px; flex-wrap:wrap;
+      color: var(--muted2);
+      font-size: 13px;
+      font-weight:700;
+    }
+    .mini a{color:var(--muted); font-weight:900}
+    .mini a:hover{color:var(--text)}
+
+    /* Profile card */
+    .profile-card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .profile-top{
+      padding: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap: wrap;
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight:900;
+      font-size: 12.5px;
+    }
+
+    .avatar-wrap{
+      padding: 0 18px 18px;
+      display:grid;
+      place-items:center;
+    }
+
+    .avatar{
+      width: 190px;
+      height: 190px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.20), transparent 55%),
+        linear-gradient(135deg, rgba(106,166,255,.35), rgba(155,123,255,.25));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 20px 55px rgba(0,0,0,.45);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .avatar img{
+      width:100%; height:100%; object-fit:cover;
+      filter: saturate(1.05) contrast(1.02);
+    }
+
+    .avatar::after{
+      content:"";
+      position:absolute; inset:-35%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.45), transparent 55%);
+      transform: rotate(18deg);
+      opacity:.25;
+      pointer-events:none;
+    }
+
+    .profile-body{padding: 0 18px 18px}
+    .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .stat{
+      padding: 12px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .stat b{display:block; font-size:14px}
+    .stat span{display:block; color:var(--muted2); font-weight:700; font-size:12.5px; margin-top:4px}
+
+    /* Sections */
+    .section{padding: 70px 0 0}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap}
+    .section-head h2{font-size:26px; letter-spacing:-.6px}
+    .section-head p{color:var(--muted2); max-width:60ch; font-size:14px; font-weight:700}
+
+    .cards{display:grid; gap:16px}
+    .cards-2{grid-template-columns: repeat(2, minmax(0,1fr))}
+    .cards-3{grid-template-columns: repeat(3, minmax(0,1fr))}
+
+    .glass{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow2);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .glass::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(650px 240px at 10% 15%, rgba(106,166,255,.12), transparent 60%),
+        radial-gradient(650px 240px at 90% 15%, rgba(155,123,255,.10), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .glass > *{position:relative}
+
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight:900;
+      font-size: 12px;
+      width:fit-content;
+      margin-bottom:10px;
+    }
+
+    .glass h3{font-size:16px; letter-spacing:-.3px}
+    .glass p{margin-top:8px; color:var(--muted); font-size:14px; line-height:1.7; font-weight:650}
+
+    .list{margin-top:12px; display:grid; gap:10px}
+    .list li{list-style:none; display:flex; gap:10px; color:var(--muted); font-weight:700; font-size:13.5px}
+    .check{
+      width:18px;height:18px;border-radius:7px;
+      background: rgba(85,255,167,.14);
+      border:1px solid rgba(85,255,167,.22);
+      flex:0 0 auto;
+      margin-top:2px;
+      position:relative;
+    }
+    .check::after{
+      content:"";
+      position:absolute;
+      left:5px; top:3px;
+      width:6px; height:10px;
+      border-right:2px solid rgba(85,255,167,.95);
+      border-bottom:2px solid rgba(85,255,167,.95);
+      transform: rotate(35deg);
+    }
+
+    /* Timeline */
+    .timeline{display:grid; gap:12px}
+    .t-item{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      transition: transform .18s ease, background .25s ease;
+    }
+    .t-item:hover{transform: translateY(-2px); background: rgba(255,255,255,.06)}
+    .t-item h3{font-size:15.5px}
+    .t-item .meta{color:var(--muted2); font-weight:800; font-size:12.5px; margin-top:4px}
+    .t-item .desc{color:var(--muted); font-size:13.5px; margin-top:8px; line-height:1.7; font-weight:650}
+    .tag{
+      height:fit-content;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(106,166,255,.12);
+      border:1px solid rgba(106,166,255,.18);
+      color: rgba(234,240,255,.92);
+      font-weight:900;
+      font-size: 12px;
+      white-space:nowrap;
+    }
+
+    /* Skills */
+    .skill-grid{display:flex; flex-wrap:wrap; gap:10px}
+    .skill{
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(15,26,51,.55);
+      border:1px solid rgba(255,255,255,.10);
+      font-weight:900;
+      font-size: 13px;
+      color: rgba(234,240,255,.92);
+      transition: transform .18s ease, background .25s ease;
+    }
+    .skill:hover{transform: translateY(-2px); background: rgba(255,255,255,.07)}
+
+    /* Contact */
+    .contact-grid{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:16px}
+    .copy-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    footer{padding: 60px 0 40px; color: var(--muted2); text-align:center; font-weight:700; font-size:13px}
+
+    /* Motion */
+    .reveal{
+      opacity:0;
+      transform: translateY(18px) scale(.98);
+      transition: opacity .75s ease, transform .75s ease;
+      will-change: opacity, transform;
+    }
+    .reveal.show{opacity:1; transform: translateY(0) scale(1)}
+
+    .floaty{animation: floaty 4.8s ease-in-out infinite;}
+    @keyframes floaty{
+      0%,100%{transform: translateY(0)}
+      50%{transform: translateY(-10px)}
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:1fr}
+      .cards-2{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .hamburger{display:inline-flex}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1; transform:none; transition:none}
+      .floaty{animation:none}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="Go to Home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            Md. Amber Ali Khandoker
+            <small>HR • ERP/HRIS • Data Ops</small>
+          </div>
+        </a>
+
+        <div class="nav-links" aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a class="btn" href="https://linkedin.com/in/mdamberalikhandoker" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="btn btn-primary" href="#contact">Hire / Contact</a>
+          <button class="btn hamburger" id="menuBtn" aria-label="Open menu">☰</button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" style="display:none; padding: 0 0 14px;">
+        <div class="glass" style="padding:12px;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="#home">Home</a>
+            <a class="btn" href="#about">About</a>
+            <a class="btn" href="#resume">Resume</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-grid">
+
+        <div class="hero-card reveal">
+          <div class="hero-inner">
+            <div class="kicker"><span class="dot"></span> Available for opportunities • Bangladesh</div>
+
+            <h1 class="hero-title">
+              Hi, I’m <span class="gradient-name">Md. Amber Ali Khandoker</span>
+            </h1>
+
+            <p class="hero-sub">
+              I help teams run smoother with <b>ERP</b>, <b>HRIS</b>, and <b>data-driven operations</b> — from accurate inventory control to HR documentation, reporting, and process improvement.
+            </p>
+
+            <div class="pill-row">
+              <span class="pill">ERP Inventory</span>
+              <span class="pill">HRIS Data</span>
+              <span class="pill">Store Management</span>
+              <span class="pill">Admin Support</span>
+              <span class="pill">MS Office</span>
+              <span class="pill">Canva</span>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#resume">View Resume</a>
+              <a class="btn" href="#contact">Contact Me</a>
+              <a class="btn" href="mailto:ammar.khandoker@outlook.com">Email</a>
+            </div>
+
+            <div class="mini">
+              <span>📧 <a href="mailto:ammar.khandoker@outlook.com">ammar.khandoker@outlook.com</a></span>
+              <span>📞 <a href="tel:+8801716861353">+8801716-861353</a></span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card reveal floaty">
+          <div class="profile-top">
+            <span class="badge">⚡ Fast Learner</span>
+            <span class="badge">🎯 High Accuracy</span>
+          </div>
+
+          <div class="avatar-wrap">
+            <div class="avatar">
+              <img src="photo.jpg" alt="Md. Amber Ali Khandoker"
+                onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          <div class="profile-body">
+            <div class="stat-grid">
+              <div class="stat">
+                <b>4+ Years</b>
+                <span>Data & Ops Experience</span>
+              </div>
+              <div class="stat">
+                <b>ERP + HRIS</b>
+                <span>System-driven work</span>
+              </div>
+              <div class="stat">
+                <b>Inventory</b>
+                <span>Stock accuracy</span>
+              </div>
+              <div class="stat">
+                <b>Reporting</b>
+                <span>Daily / Monthly</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head reveal">
+        <div>
+          <h2>About</h2>
+          <p>
+            I’m a detail-focused professional who loves structured systems, clean data, and reliable processes.
+            My strength is turning day-to-day operational tasks into measurable, trackable workflows.
+          </p>
+        </div>
+      </div>
+
+      <div class="cards cards-3">
+        <div class="glass reveal">
+          <div class="chip">🧠 My Focus</div>
+          <h3>Accuracy + Speed</h3>
+          <p>Clean data entry, audit-ready reporting, and disciplined documentation to keep operations smooth.</p>
+          <ul class="list">
+            <li><span class="check"></span> Error-free reporting mindset</li>
+            <li><span class="check"></span> Organized file & record handling</li>
+            <li><span class="check"></span> Consistent follow-up</li>
+          </ul>
+        </div>
+
+        <div class="glass reveal">
+          <div class="chip">⚙️ Tools</div>
+          <h3>ERP / HRIS / Office</h3>
+          <p>Comfortable working in enterprise systems and maintaining data integrity across departments.</p>
+          <ul class="list">
+            <li><span class="check"></span> ERP-based inventory updates</li>
+            <li><span class="check"></span> HRIS employee records</li>
+            <li><span class="check"></span> Excel formulas & reports</li>
+          </ul>
+        </div>
+
+        <div class="glass reveal">
+          <div class="chip">🚀 Growth</div>
+          <h3>Always Learning</h3>
+          <p>I keep upgrading my skills through practical projects and modern tools like AI + Canva.</p>
+          <ul class="list">
+            <li><span class="check"></span> Prompt engineering basics</li>
+            <li><span class="check"></span> Creator brand design</li>
+            <li><span class="check"></span> Process improvement mindset</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resume">
+      <div class="section-head reveal">
+        <div>
+          <h2>Resume</h2>
+          <p>Recruiter-friendly overview of experience, education, skills, and certifications.</p>
+        </div>
+        <div>
+          <a class="btn" href="#contact">Request Full CV</a>
+        </div>
+      </div>
+
+      <div class="cards cards-2">
+        <div class="glass reveal">
+          <div class="chip">💼 Experience</div>
+          <div class="timeline">
+            <div class="t-item">
+              <div>
+                <h3>Executive – Store Management</h3>
+                <div class="meta">Step Media Limited • Jan 2025 – Present</div>
+                <div class="desc">ERP inventory flow, stock accuracy, goods receiving/dispatch documentation, coordination with procurement & logistics.</div>
+              </div>
+              <div class="tag">Current</div>
+            </div>
+
+            <div class="t-item">
+              <div>
+                <h3>Junior Executive – HR & Admin</h3>
+                <div class="meta">RFL Electronics Limited</div>
+                <div class="desc">HRIS data entry, attendance & leave tracking, onboarding docs, training & interview coordination, confidential records.</div>
+              </div>
+              <div class="tag">HR</div>
+            </div>
+
+            <div class="t-item">
+              <div>
+                <h3>Data Entry Operator – Finishing</h3>
+                <div class="meta">Chorka Apparels Limited</div>
+                <div class="desc">Production/QC data updates in ERP, real-time workflow reporting, audit logs & checklists.</div>
+              </div>
+              <div class="tag">ERP</div>
+            </div>
+
+            <div class="t-item">
+              <div>
+                <h3>Computer Operator – Production</h3>
+                <div class="meta">Mahdeen Group</div>
+                <div class="desc">Daily production reports, data verification vs physical stock, backup handling & minor troubleshooting support.</div>
+              </div>
+              <div class="tag">Ops</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass reveal">
+          <div class="chip">🎓 Education</div>
+          <div class="timeline" style="margin-bottom:14px">
+            <div class="t-item">
+              <div>
+                <h3>BSS (Bachelor of Social Science)</h3>
+                <div class="meta">Kurigram Govt. College • National University</div>
+                <div class="desc">Currently studying (Running).</div>
+              </div>
+              <div class="tag">BSS</div>
+            </div>
+
+            <div class="t-item">
+              <div>
+                <h3>HSC – Humanities</h3>
+                <div class="meta">Lalmonirhat Adarsha College • GPA 3.67</div>
+                <div class="desc">Strong foundation in communication & academic discipline.</div>
+              </div>
+              <div class="tag">HSC</div>
+            </div>
+
+            <div class="t-item">
+              <div>
+                <h3>SSC – Science</h3>
+                <div class="meta">Purbo Balakandi Dakhil Madrasha • GPA 3.39</div>
+                <div class="desc">Built analytical thinking and structured problem-solving habits.</div>
+              </div>
+              <div class="tag">SSC</div>
+            </div>
+          </div>
+
+          <div class="chip">🧩 Skills</div>
+          <div class="skill-grid">
+            <span class="skill">ERP</span>
+            <span class="skill">HRIS</span>
+            <span class="skill">Inventory Management</span>
+            <span class="skill">Database Management</span>
+            <span class="skill">MS Office</span>
+            <span class="skill">Data Entry & Reporting</span>
+            <span class="skill">Store Management</span>
+            <span class="skill">Canva</span>
+            <span class="skill">Virtual Assistant</span>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <div class="chip">📜 Certifications</div>
+          <ul class="list">
+            <li><span class="check"></span> Advanced Computer Course (BTEB) — 2023</li>
+            <li><span class="check"></span> Master ChatGPT — UniAthena</li>
+            <li><span class="check"></span> Working with Creatives — LinkedIn Learning</li>
+            <li><span class="check"></span> Human Resources Payroll — LinkedIn Learning</li>
+            <li><span class="check"></span> Project Management Foundations — LinkedIn Learning</li>
+            <li><span class="check"></span> Designing Your Creator Brand with Canva — LinkedIn Learning</li>
+            <li><span class="check"></span> Effective Leadership — HP Life</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-head reveal">
+        <div>
+          <h2>Contact</h2>
+          <p>If you want to discuss an opportunity, collaboration, or need help with ERP/HRIS data & operations — reach out anytime.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="glass reveal">
+          <div class="chip">📩 Direct Contact</div>
+          <h3>Let’s connect</h3>
+          <p>Fastest response via email or LinkedIn message.</p>
+
+          <div class="copy-row">
+            <a class="btn btn-primary" href="mailto:ammar.khandoker@outlook.com">Email Me</a>
+            <a class="btn" href="https://linkedin.com/in/mdamberalikhandoker" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a class="btn" href="tel:+8801716861353">Call</a>
+          </div>
+
+          <p style="margin-top:14px; color: var(--muted2); font-weight:800; font-size:13px">
+            Tip: This website is GitHub Pages ready (free hosting).
+          </p>
+        </div>
+
+        <div class="glass reveal">
+          <div class="chip">🧠 Quick Info</div>
+          <h3>What I’m good at</h3>
+          <ul class="list">
+            <li><span class="check"></span> ERP inventory update & documentation</li>
+            <li><span class="check"></span> HRIS employee record maintenance</li>
+            <li><span class="check"></span> Excel reporting & data accuracy</li>
+            <li><span class="check"></span> Store operations & stock control</li>
+          </ul>
+
+          <div style="height:12px"></div>
+
+          <div class="chip">📍 Location</div>
+          <p style="margin-top:0; color: var(--muted); font-weight:750;">Bangladesh</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Md. Amber Ali Khandoker • Built for GitHub Pages
+    </footer>
+  </main>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn){
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = isOpen ? 'none' : 'block';
+        menuBtn.textContent = isOpen ? '☰' : '✕';
+      });
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => io.observe(el));
+
+    // Active link highlight
+    const links = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+    const setActive = () => {
+      const y = window.scrollY + 120;
+      let current = sections[0]?.id || 'home';
+      sections.forEach(sec => {
+        if(sec.offsetTop <= y) current = sec.id;
+      });
+      links.forEach(a => {
+        const active = a.getAttribute('href') === '#' + current;
+        a.style.background = active ? 'rgba(255,255,255,.08)' : 'transparent';
+        a.style.color = active ? 'rgba(234,240,255,1)' : 'rgba(234,240,255,.72)';
+      });
+    };
+
+    window.addEventListener('scroll', setActive);
+    setActive();
+  </script>
+</body>
+</html>
